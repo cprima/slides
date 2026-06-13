@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: Slides
+---
+<main>
+  <h1>Slides</h1>
+  <p>Timeless frameworks, diagrams, and conceptual models.</p>
+  <ul>
+    {%- for deck in collections.deck %}
+    <li><a href="{{ deck.url }}">{{ deck.data.title }}</a></li>
+    {%- endfor %}
+  </ul>
+</main>
