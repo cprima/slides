@@ -7,7 +7,7 @@ title: Slides
   <p>Timeless frameworks, diagrams, and conceptual models.</p>
   <ul>
     {%- for deck in collections.deck %}
-    <li><a href="{{ deck.url }}">{{ deck.data.title }}</a></li>
+    <li><a href="{{ deck.url | url }}">{{ deck.data.title }}</a></li>
     {%- endfor %}
   </ul>
 </main>
