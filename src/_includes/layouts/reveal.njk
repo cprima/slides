@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/solarized.css">
+
+  <!-- ported plugin styles -->
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/cpmFooter/cpmFooter.css" | url }}">
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/cpmBroadcastdesign/cpmBroadcastdesign.css" | url }}">
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/cpmCarousel/cpmCarousel.css" | url }}">
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/customSlideContent/customSlideStyle.css" | url }}">
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/jeopardy/jeopardy.css" | url }}">
+  <link rel="stylesheet" href="{{ "/assets/reveal-plugins/gallery/gallery.css" | url }}">
+
+  <link rel="stylesheet" href="{{ "/assets/css/reveal.css" | url }}">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+
+  <!-- ported plugins (classic scripts; loaded before init) -->
+  <script src="{{ "/assets/reveal-plugins/ratioSlider/plugin.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/cpmFooter/plugin.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/cpmBroadcastdesign/plugin.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/cpmCarousel/plugin.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/customSlideContent/customSlideContent.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/jeopardy/jeopardy.js" | url }}"></script>
+
+  <script>window._site = {{ site | dump | safe }};</script>
+  <script src="{{ "/assets/js/reveal-init.js" | url }}"></script>
+
+  <!-- self-initializing plugins (must load after Reveal.initialize) -->
+  <script src="{{ "/assets/reveal-plugins/wordcloud/reveal-wordcloud.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/tagcloud/tagcloud.js" | url }}"></script>
+  <script src="{{ "/assets/reveal-plugins/gallery/gallery.plugin.js" | url }}"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "slides",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "node -e \"import('fs').then(fs=>fs.default.rmSync('dist',{recursive:true,force:true}))\"",
+    "build": "npm run clean && eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
