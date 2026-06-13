@@ -5,6 +5,7 @@
 
 set -euo pipefail
 
+export GH_HOST=github.com
 REPO="cprima/slides"
 
 # ── 1. Visibility ────────────────────────────────────────────────────────────
@@ -25,7 +26,7 @@ gh api -X PUT "repos/$REPO/actions/permissions" \
   --silent
 echo "Actions: enabled, all actions allowed."
 
-# Allow Actions to create and approve pull requests (needed for pages token).
+# Allow Actions to write (needed for the pages deploy token).
 gh api -X PUT "repos/$REPO/actions/permissions/workflow" \
   --field default_workflow_permissions=write \
   --field can_approve_pull_request_reviews=false \
@@ -34,7 +35,11 @@ echo "Actions workflow permissions: write."
 
 # ── 3. GitHub Pages ──────────────────────────────────────────────────────────
 # Source: GitHub Actions (not a branch) — required for our pages.yml workflow.
-PAGES_STATUS=$(gh api "repos/$REPO/pages" --jq '.build_type' 2>/dev/null || echo "not_found")
+if gh api "repos/$REPO/pages" --silent 2>/dev/null; then
+  PAGES_STATUS=$(gh api "repos/$REPO/pages" --jq '.build_type')
+else
+  PAGES_STATUS="not_found"
+fi
 
 if [ "$PAGES_STATUS" = "workflow" ]; then
   echo "Pages already configured (source: Actions)."
